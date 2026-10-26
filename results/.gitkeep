@@ -1,0 +1,2 @@
+# results/.gitkeep — keeps the results/ directory tracked by git.
+# Actual JSON result files are committed alongside this file after each benchmark run.
