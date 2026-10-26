@@ -1,0 +1,28 @@
+# Normalize line endings: LF in the repo, platform-native on checkout.
+* text=auto
+
+# Force LF for source files regardless of platform.
+*.py   text eol=lf
+*.cpp  text eol=lf
+*.h    text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.cfg  text eol=lf
+*.cmake text eol=lf
+CMakeLists.txt text eol=lf
+
+# Binary files — never diff or mangle.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.npy  binary
+*.npz  binary
+*.h5   binary
+*.pt   binary
+*.pyd  binary
+*.so   binary
+*.dll  binary
