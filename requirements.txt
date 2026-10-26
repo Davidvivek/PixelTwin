@@ -1,0 +1,32 @@
+# PixelTwin — pinned dependencies
+# Python 3.12.10
+#
+# Install:
+#   pip install -r requirements.txt
+#
+# Verify install:
+#   python -c "import pixeltwin; print(pixeltwin.__version__)"
+#
+# All versions are pinned to the exact build used during development.
+# Do NOT change versions without re-running all benchmarks and updating results/*.json.
+
+# ── Core image processing ──────────────────────────────────────────────────────
+numpy==2.3.0
+opencv-python==4.11.0.86
+Pillow==11.2.1
+scipy==1.15.3
+
+# ── Deep learning (ResNet baseline, M5) ───────────────────────────────────────
+torch==2.7.0
+torchvision==0.22.0
+
+# ── C++ bindings (M3) ─────────────────────────────────────────────────────────
+pybind11==2.13.6
+
+# ── Evaluation and visualisation ──────────────────────────────────────────────
+matplotlib==3.10.3
+tqdm==4.67.1
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest==9.0.2
+pytest-cov==6.1.0

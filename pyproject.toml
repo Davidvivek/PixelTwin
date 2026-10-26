@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pixeltwin"
+version = "0.1.0"
+description = "Near-duplicate image search: pHash + LSH + ORB + ResNet baseline"
+requires-python = ">=3.12"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "David Vivek" }]
+
+dependencies = [
+    "numpy==2.3.0",
+    "opencv-python==4.11.0.86",
+    "Pillow==11.2.1",
+    "scipy==1.15.3",
+    "matplotlib==3.10.3",
+    "tqdm==4.67.1",
+]
+
+[project.optional-dependencies]
+# Deep learning baseline (M5) — large download, optional for pure classical pipeline
+dl = ["torch==2.7.0", "torchvision==0.22.0"]
+# Testing
+dev = ["pytest==9.0.2", "pytest-cov==6.1.0"]
+
+[project.scripts]
+pixeltwin = "pixeltwin.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pixeltwin*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["pixeltwin"]
+omit = ["pixeltwin/cli.py"]  # CLI tested manually
