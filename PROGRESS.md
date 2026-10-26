@@ -30,7 +30,27 @@ Files added:
 
 ---
 
-### C1 — Hashing ⬜ (next)
+### C1 — Hashing ✅
+**Committed:** 2026-10-27
+
+Files added / modified:
+- `pixeltwin/hashing.py` — aHash, dHash, pHash (64-bit), `hamming_distance`, `hamming_distances` (NumPy LUT popcount)
+- `tests/test_hashing.py` — 42 tests across 7 classes
+
+**Measured distances (block-grid test image, 256×256):**
+
+| Transform | pHash dist | aHash dist | dHash dist |
+|-----------|-----------|-----------|-----------|
+| JPEG q=90 | 4 | 0 | 0 |
+| JPEG q=70 | 6 | 0 | 0 |
+| JPEG q=50 | 6 | — | — |
+| JPEG q=30 | 6 | — | — |
+| Resize ×0.75 | 4 | — | — |
+| Resize ×0.5 | 10 | — | — |
+| Brightness +30 | 0 | — | 0 |
+| Brightness +50 | 8 | — | 0 |
+
+**Test result:** 42/42 passed in 1.89 s
 ### C2 — Transforms ⬜
 ### C3a — Dataset prep ⬜
 ### C3b — Full dataset download ⬜
