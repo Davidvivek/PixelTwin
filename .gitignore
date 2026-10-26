@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+.eggs/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+
+# C++ build artifacts
+cpp/build/
+cpp/_build/
+*.o
+*.so
+*.dll
+*.lib
+*.a
+*.exp
+*.pdb
+*.ilk
+
+# Dataset and large binaries (committed via DVC or documented download scripts)
+data/
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Results (committed intentionally; exclude local scratch)
+results/scratch/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.user
