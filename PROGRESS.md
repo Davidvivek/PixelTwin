@@ -51,7 +51,24 @@ Files added / modified:
 | Brightness +50 | 8 | — | 0 |
 
 **Test result:** 42/42 passed in 1.89 s
-### C2 — Transforms ⬜
+### C2 — Transforms ✅
+**Committed:** 2026-10-27
+
+Files added / modified:
+- `pixeltwin/transforms.py` — `TransformSpec` dataclass, JSON serialization (`to_dict` / `from_dict`), slug generation, primitives (`jpeg_compress`, `resize_image`, `center_crop`, `rotate_image`, `adjust_brightness`, `adjust_contrast`, `add_gaussian_noise`, `apply_combo`), `apply_transform` central dispatch, and canonical `ALL_SPECS` registry (26 specs).
+- `tests/test_transforms.py` — 30 comprehensive unit tests covering all primitives, edge cases, determinism, input immutability, and spec serialization.
+
+**Canonical Transforms Registry (26 specs in `ALL_SPECS`):**
+- JPEG: quality 90, 70, 50, 30
+- Resize: scale 0.75, 0.50, 0.25
+- Crop: frac 0.90, 0.80, 0.70
+- Rotation: degrees 5°, 15°, 45°, 90° (with reflection border)
+- Brightness: shift +30, -30, +60, -60
+- Contrast: factor 1.3, 0.7
+- Gaussian noise: sigma 10, 20 (seeded)
+- Combos: 4 real-world multi-step pipelines (e.g., JPEG+resize, JPEG+brightness, resize+noise, rotate+JPEG)
+
+**Test result:** 72/72 passed (30 transforms + 42 hashing) in < 10s.
 ### C3a — Dataset prep ⬜
 ### C3b — Full dataset download ⬜
 ### C4 — Metrics + brute force + M1 benchmark ⬜
