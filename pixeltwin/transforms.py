@@ -102,6 +102,14 @@ class TransformSpec:
     name: str
     params: dict[str, Any] = field(default_factory=dict)
 
+    def __post_init__(self) -> None:
+        """Normalize combo steps so (name, params) are consistent whether loaded from JSON or code."""
+        if self.name == "combo" and "steps" in self.params:
+            self.params["steps"] = [
+                (step[0], dict(step[1])) if isinstance(step, (list, tuple)) else step
+                for step in self.params["steps"]
+            ]
+
     def __str__(self) -> str:
         """Human-readable one-liner, e.g. ``jpeg(quality=90)``."""
         if not self.params:
@@ -119,6 +127,15 @@ class TransformSpec:
         for old, new in [("(", "_"), (")", ""), ("=", ""), (",", "_"), (".", "p"), ("-", "neg")]:
             s = s.replace(old, new)
         return s
+
+    def to_dict(self) -> dict[str, Any]:
+        """Convert spec to JSON-serialisable dictionary."""
+        return {"name": self.name, "params": self.params}
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> TransformSpec:
+        """Construct TransformSpec from dictionary."""
+        return cls(name=data["name"], params=data.get("params", {}))
 
 
 # ---------------------------------------------------------------------------
